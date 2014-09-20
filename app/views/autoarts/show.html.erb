@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @autoart.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @autoart.description %>
+</p>
+
+<%= link_to 'Edit', edit_autoart_path(@autoart) %> |
+<%= link_to 'Back', autoarts_path %>

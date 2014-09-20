@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  devise_for :users
+  resources :autoarts
+
   root "pages#home"
   
   get 'pages/home'
