@@ -69,6 +69,6 @@ class AutoartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def autoart_params
-      params.require(:autoart).permit(:title, :description)
+      params.require(:autoart).permit(:title, :description, :image)
     end
 end

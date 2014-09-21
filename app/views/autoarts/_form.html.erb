@@ -1,4 +1,4 @@
-<%= form_for(@autoart) do |f| %>
+<%= form_for(@autoart, :html => { :multipart => true }) do |f| %>
   <% if @autoart.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@autoart.errors.count, "error") %> prohibited this autoart from being saved:</h2>
@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <div class="form-group">
+    <%= f.label :image %><br>
+    <%= f.file_field :image, class: "form-control"%>
+  </div>
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
