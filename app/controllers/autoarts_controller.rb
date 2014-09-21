@@ -1,6 +1,7 @@
 class AutoartsController < ApplicationController
   before_action :set_autoart, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+  before_filter :check_user, only: [:edit, :update, :destroy]
   # GET /autoarts
   # GET /autoarts.json
   def index
@@ -25,6 +26,7 @@ class AutoartsController < ApplicationController
   # POST /autoarts.json
   def create
     @autoart = Autoart.new(autoart_params)
+    @autoart.user_id = current_user.id
 
     respond_to do |format|
       if @autoart.save
@@ -71,4 +73,10 @@ class AutoartsController < ApplicationController
     def autoart_params
       params.require(:autoart).permit(:title, :description, :image)
     end
+
+    def check_user
+      if current_user != @autoart.user
+        redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
+    end
+  end
 end
