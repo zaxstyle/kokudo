@@ -1,7 +1,8 @@
 class AutoartsController < ApplicationController
   before_action :set_autoart, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
-  before_filter :check_user, only: [:edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   # GET /autoarts
   # GET /autoarts.json
   def index
@@ -43,6 +44,7 @@ class AutoartsController < ApplicationController
   # PATCH/PUT /autoarts/1.json
   def update
     respond_to do |format|
+    @autoart.user_id = current_user.id
       if @autoart.update(autoart_params)
         format.html { redirect_to @autoart, notice: 'Autoart was successfully updated.' }
         format.json { render :show, status: :ok, location: @autoart }
@@ -74,9 +76,9 @@ class AutoartsController < ApplicationController
       params.require(:autoart).permit(:title, :description, :image)
     end
 
-    def check_user
-      if current_user != @autoart.user
-        redirect_to root_url, alert: "Sorry, this listing belongs to someone else"
+    def correct_user
+      @autoart = current_user.pins.find_by(id: params[:id])
+      redirect_to autoart_path, notice: "Not authorized to edit this pin" if @pin.nil?
     end
+
   end
-end

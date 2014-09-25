@@ -8,6 +8,10 @@
 			 <div class="panel-body">
 			 	<p><strong><%= @autoart.title %></strong></p>
 			 	<p><strong><%= @autoart.description %></strong></p>
+   				<%= link_to edit_autoart_path(@autoart) do%> 
+                <span class="glyphicon glyphicon-edit"></span>
+                  Edit
+				<% end %>
 			 </div>
 		</div>
 	</div>
@@ -15,5 +19,4 @@
 </div>
 
 
-<%= link_to 'Edit', edit_autoart_path(@autoart) %> |
 <%= link_to 'Back', autoarts_path %>

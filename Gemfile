@@ -11,6 +11,7 @@ gem 'jquery-turbolinks'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'masonry-rails'
+gem 'cancancan', '~> 1.9'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
