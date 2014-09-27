@@ -1,5 +1,8 @@
-<h1>Listing autoarts</h1>
-<%= link_to 'New Autoart', new_autoart_path %><br>
+
+<% if user_signed_in? %>
+  <%= link_to 'New Autoart', new_autoart_path, class: "btn btn-success"%>
+<% end %>
+<br>
 <br>
 <div id="autoarts" class="transitions-enabled">
   <% @autoarts.each do |autoart| %>

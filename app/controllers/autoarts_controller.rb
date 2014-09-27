@@ -77,8 +77,8 @@ class AutoartsController < ApplicationController
     end
 
     def correct_user
-      @autoart = current_user.pins.find_by(id: params[:id])
-      redirect_to autoart_path, notice: "Not authorized to edit this pin" if @pin.nil?
+      @autoart = current_user.autoarts.find_by(id: params[:id])
+      redirect_to autoart_path, notice: "You have no autorization to this art" if @autoart.nil?
     end
 
   end
