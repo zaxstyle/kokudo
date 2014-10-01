@@ -1,12 +1,20 @@
 class AutoartsController < ApplicationController
   before_action :set_autoart, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!, only: [:new, :create, :update, :edit, :destroy]
+  before_filter :authenticate_user!, only: [:myautoarts, :new, :create, :update, :edit, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
+
+  def myautoarts
+    @autoarts = Autoart.where(user: current_user).order("created_at DESC")
+  end
 
   # GET /autoarts
   # GET /autoarts.json
   def index
-    @autoarts = Autoart.all
+    if params[:tag]
+      @autoarts = Autoart.tagged_with(params[:tag])
+    else  
+      @autoarts = Autoart.all.order("created_at DESC")
+    end
   end
 
   # GET /autoarts/1
@@ -66,6 +74,8 @@ class AutoartsController < ApplicationController
   end
 
   private
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_autoart
       @autoart = Autoart.find(params[:id])
@@ -73,7 +83,7 @@ class AutoartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def autoart_params
-      params.require(:autoart).permit(:title, :description, :image)
+      params.require(:autoart).permit(:title, :description, :image, :tag_list)
     end
 
     def correct_user

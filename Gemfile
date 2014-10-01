@@ -17,6 +17,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem "paperclip", "~> 4.2"
+gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'sdoc', '~> 0.4.0',          group: :doc
 

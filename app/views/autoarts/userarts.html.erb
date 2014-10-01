@@ -1,0 +1,12 @@
+<div id="autoarts" class="transitions-enabled">
+  <% @autoarts.each do |autoart| %>
+    <div class="box panel panel-default">
+      <%= link_to image_tag(autoart.image.url), autoart %>
+          <div class="panel-body">
+            <h3><%= autoart.title %></h3>
+
+          </div>
+    </div>      
+  <% end %>
+</div>
+<br>

@@ -9,8 +9,9 @@
 			 	<p><strong><%= @autoart.title %></strong></p>
 			 	<p><strong><%= @autoart.description %></strong></p>
 			 	<p><strong><%= "Added by : #{@autoart.user.username}" %></strong></p>
-   				<%= link_to edit_autoart_path(@autoart) do%> 
-                <span class="glyphicon glyphicon-edit"></span>
+			 	<p><strong>Tags:</strong> <%= raw @autoart.tag_list.map { |t| link_to t, tag_path(t) }.join(',') %></p>
+			    <%= link_to edit_autoart_path(@autoart) do%> 
+                	<span class="glyphicon glyphicon-edit"></span>
                   Edit
 				<% end %>
 			 </div>

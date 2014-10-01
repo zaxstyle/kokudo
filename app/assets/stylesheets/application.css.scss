@@ -20,3 +20,11 @@
   padding: 5px;
   margin-top: 0px;
 }
+
+#tag_cloud {
+  width: 100%;
+  line-height: 1.6em;
+  .s { font-size: 0.8em; }
+  .m { font-size: 1.2em; }
+  .l { font-size: 1.8em; }
+}

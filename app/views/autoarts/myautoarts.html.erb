@@ -1,11 +1,8 @@
-<div id="tag_cloud">
-  <% tag_cloud Autoart.tag_counts, %w[s m l] do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-  <% end %>
-</div>
+<% if user_signed_in? %>
+  <%= link_to 'New Autoart', new_autoart_path, class: "btn btn-success" %>
+<% end %>
 <br>
 <br>
-
 <div id="autoarts" class="transitions-enabled">
   <% @autoarts.each do |autoart| %>
     <div class="box panel panel-default">
@@ -17,7 +14,6 @@
                 <span class="glyphicon glyphicon-edit"></span>
                   Edit
               <% end %>
-
               |<%= link_to autoart, method: :delete, data: { confirm: 'Are you sure?' } do %>
                 <span class="glyphicon glyphicon-trash"></span>
                   Delete
@@ -28,5 +24,3 @@
   <% end %>
 </div>
 <br>
-
-

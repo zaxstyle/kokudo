@@ -3,9 +3,16 @@ Rails.application.routes.draw do
   devise_for :users
   resources :autoarts
 
+
+  get 'pages/home'
+  get 'myautoarts' => "autoarts#myautoarts"
+  get 'userarts' => "autoarts#userarts"
+
+  get 'tags/:tag', to: 'autoarts#index' , as: :tag
+  
   root "pages#home"
   
-  get 'pages/home'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
